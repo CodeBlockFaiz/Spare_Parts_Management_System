@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auto World</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+  </head>
+
+  <body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="site-header">
+      <div class="brand">
+        <img src="{% static 'images/autoworld_logo.png' %}" alt="Auto World Logo">
+        <a href="/dashboard/">Auto <span>World</span></a>
+      </div>
+
+      <nav>
+        <a href="/dashboard/">Dashboard</a>
+        <a href="/parts/">Parts</a>
+        <a href="/invoices/">Invoices</a>
+        <a href="/invoices/create/">Create Invoice</a>
+        <a href="/payments/">Payments</a>
+      </nav>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="container">
+      {% if messages %}
+        <ul class="messages">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+      © {{ now.year }} Auto World. All rights reserved.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Dashboard</h1>
+  <div class='cards'>
+    <div class='card'><h3>Total Invoices</h3><p>{{ total_invoices }}</p></div>
+    <div class='card'><h3>Total Payments</h3><p>₹{{ total_payments }}</p></div>
+  </div>
+  <h2>Recent Invoices</h2>
+  <div class='list'>
+    {% for inv in recent %}<div class='item'><strong>{{ inv.invoice_number }}</strong> — {{ inv.date }} — ₹{{ inv.total }}</div>{% empty %}<p>No invoices yet.</p>{% endfor %}
+  </div>
+  <h2>Invoices by Month</h2>
+  {% for month, invs in months.items %}
+    <h3>{{ month }}</h3>
+    <ul>{% for i in invs %}<li>{{ i.invoice_number }} — {{ i.date }} — ₹{{ i.total }}</li>{% endfor %}</ul>
+  {% endfor %}
+{% endblock %}

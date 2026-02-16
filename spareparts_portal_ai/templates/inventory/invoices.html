@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Invoices</h1>
+  {% for month, invs in months.items %}
+    <section class='month'>
+      <h2>{{ month }}</h2>
+      <table class='table'><thead><tr><th>Invoice</th><th>Date</th><th>Total</th></tr></thead><tbody>
+        {% for inv in invs %}<tr><td>{{ inv.invoice_number }}</td><td>{{ inv.date }}</td><td>₹{{ inv.total }}</td></tr>{% endfor %}
+      </tbody></table>
+    </section>
+  {% endfor %}
+{% endblock %}

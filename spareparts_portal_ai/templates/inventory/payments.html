@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block content %}
+  <h1>Payments</h1>
+  <form method='post'>{% csrf_token %}{{ form.as_p }}<button class='btn'>Record Payment</button></form>
+  <hr/>
+  <ul>{% for p in payments %}<li>{{ p.date }} — ₹{{ p.amount }} — {{ p.method }} — {{ p.invoice.invoice_number }}</li>{% empty %}<p>No payments yet.</p>{% endfor %}</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Recommendations for {{ part.name }}</h1>
+  {% if recs %}
+    <div class="grid">
+      {% for r in recs %}
+        <div class='card small'>
+          <h4>{{ r.part.name }}</h4>
+          <p>Score: {{ r.score|floatformat:2 }}</p>
+          <p>Price: ₹{{ r.part.price }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No recommendations available (not enough data).</p>
+  {% endif %}
+{% endblock %}

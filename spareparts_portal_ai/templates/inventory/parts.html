@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Parts</h1>
+  <form method='post'>{% csrf_token %}{{ form.as_p }}<button class='btn'>Add Part</button></form>
+  <hr/>
+  <div class='grid'>
+    {% for p in parts %}<div class='card small'><h4>{{ p.name }}</h4><p>SKU: {{ p.sku }}</p><p>Price: ₹{{ p.price }}</p><p>Qty: {{ p.quantity }}</p><p><a href="{% url 'inventory:part_recommendations' p.id %}">See recommendations</a> | <a href="{% url 'inventory:forecast_part_sales' p.id %}">Forecast</a></p></div>{% empty %}<p>No parts yet.</p>{% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Sales Forecast for {{ part.name }}</h1>
+  {% if img_url %}
+    <img src='{{ img_url }}' alt='forecast' style='max-width:100%;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.4)'>
+  {% else %}
+    <p>No forecast available.</p>
+  {% endif %}
+{% endblock %}

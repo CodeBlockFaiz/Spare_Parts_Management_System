@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% block content %}
+  <h1>Create Invoice</h1>
+  <form method='post' id='invoice-form'>{% csrf_token %}{{ form.as_p }}
+    <div id='lines'></div>
+    <button type='button' id='add-line' class='btn'>Add Line</button>
+    <button class='btn primary'>Create Invoice</button>
+  </form>
+  <script>
+    const parts = [{% for p in parts %}{id:{{p.id}}, label:'{{p.name}} (₹{{p.price}})'},{% endfor %}];
+  </script>
+{% endblock %}

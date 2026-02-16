@@ -1,0 +1,8 @@
+Django>=4.2,<5
+django-crispy-forms
+numpy
+pandas
+scikit-learn
+matplotlib
+statsmodels
+joblib
